@@ -14,8 +14,8 @@ class GreeterStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.SayHello = channel.unary_unary(
-        '/message.Greeter/SayHello',
+    self.Ping = channel.unary_unary(
+        '/message.Greeter/Ping',
         request_serializer=message__pb2.HelloRequest.SerializeToString,
         response_deserializer=message__pb2.HelloReply.FromString,
         )
@@ -25,7 +25,7 @@ class GreeterServicer(object):
   """The greeting service definition.
   """
 
-  def SayHello(self, request, context):
+  def Ping(self, request, context):
     """Sends a greeting
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -35,8 +35,8 @@ class GreeterServicer(object):
 
 def add_GreeterServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'SayHello': grpc.unary_unary_rpc_method_handler(
-          servicer.SayHello,
+      'Ping': grpc.unary_unary_rpc_method_handler(
+          servicer.Ping,
           request_deserializer=message__pb2.HelloRequest.FromString,
           response_serializer=message__pb2.HelloReply.SerializeToString,
       ),

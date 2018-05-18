@@ -19,8 +19,8 @@ const (
 // server is used to implement message.GreeterServer.
 type server struct{}
 
-// SayHello implements message.GreeterServer
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+// Ping implements message.GreeterServer
+func (s *server) Ping(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
 }
 

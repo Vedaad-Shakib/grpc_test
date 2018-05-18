@@ -35,7 +35,7 @@ func (m *HelloRequest) Reset()         { *m = HelloRequest{} }
 func (m *HelloRequest) String() string { return proto.CompactTextString(m) }
 func (*HelloRequest) ProtoMessage()    {}
 func (*HelloRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_message_808ea737cbaafa56, []int{0}
+	return fileDescriptor_message_0c50cb4bfddcb265, []int{0}
 }
 func (m *HelloRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HelloRequest.Unmarshal(m, b)
@@ -74,7 +74,7 @@ func (m *HelloReply) Reset()         { *m = HelloReply{} }
 func (m *HelloReply) String() string { return proto.CompactTextString(m) }
 func (*HelloReply) ProtoMessage()    {}
 func (*HelloReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_message_808ea737cbaafa56, []int{1}
+	return fileDescriptor_message_0c50cb4bfddcb265, []int{1}
 }
 func (m *HelloReply) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HelloReply.Unmarshal(m, b)
@@ -119,7 +119,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GreeterClient interface {
 	// Sends a greeting
-	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	Ping(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
 }
 
 type greeterClient struct {
@@ -130,9 +130,9 @@ func NewGreeterClient(cc *grpc.ClientConn) GreeterClient {
 	return &greeterClient{cc}
 }
 
-func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *greeterClient) Ping(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/message.Greeter/SayHello", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/message.Greeter/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -143,27 +143,27 @@ func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...
 
 type GreeterServer interface {
 	// Sends a greeting
-	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
+	Ping(context.Context, *HelloRequest) (*HelloReply, error)
 }
 
 func RegisterGreeterServer(s *grpc.Server, srv GreeterServer) {
 	s.RegisterService(&_Greeter_serviceDesc, srv)
 }
 
-func _Greeter_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Greeter_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).SayHello(ctx, in)
+		return srv.(GreeterServer).Ping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/message.Greeter/SayHello",
+		FullMethod: "/message.Greeter/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).SayHello(ctx, req.(*HelloRequest))
+		return srv.(GreeterServer).Ping(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -173,27 +173,27 @@ var _Greeter_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*GreeterServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _Greeter_SayHello_Handler,
+			MethodName: "Ping",
+			Handler:    _Greeter_Ping_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "message.proto",
 }
 
-func init() { proto.RegisterFile("message.proto", fileDescriptor_message_808ea737cbaafa56) }
+func init() { proto.RegisterFile("message.proto", fileDescriptor_message_0c50cb4bfddcb265) }
 
-var fileDescriptor_message_808ea737cbaafa56 = []byte{
-	// 167 bytes of a gzipped FileDescriptorProto
+var fileDescriptor_message_0c50cb4bfddcb265 = []byte{
+	// 166 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xcd, 0x4d, 0x2d, 0x2e,
 	0x4e, 0x4c, 0x4f, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x87, 0x72, 0x95, 0x94, 0xb8,
 	0x78, 0x3c, 0x52, 0x73, 0x72, 0xf2, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x84, 0x84, 0xb8,
 	0x58, 0xf2, 0x12, 0x73, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0xc0, 0x6c, 0x25, 0x35,
 	0x2e, 0x2e, 0xa8, 0x9a, 0x82, 0x9c, 0x4a, 0x21, 0x09, 0x2e, 0x98, 0x66, 0xa8, 0x22, 0x18, 0xd7,
-	0xc8, 0x99, 0x8b, 0xdd, 0xbd, 0x28, 0x35, 0xb5, 0x24, 0xb5, 0x48, 0xc8, 0x82, 0x8b, 0x23, 0x38,
-	0xb1, 0x12, 0xac, 0x4b, 0x48, 0x54, 0x0f, 0x66, 0x37, 0xb2, 0x4d, 0x52, 0xc2, 0xe8, 0xc2, 0x05,
-	0x39, 0x95, 0x4a, 0x0c, 0x4e, 0x5a, 0x5c, 0x12, 0x99, 0xf9, 0x7a, 0xe9, 0x45, 0x05, 0xc9, 0x7a,
-	0xa9, 0x15, 0x89, 0xb9, 0x05, 0x39, 0xa9, 0xc5, 0x30, 0x85, 0x4e, 0x3c, 0xbe, 0x10, 0x46, 0x00,
-	0xc8, 0x0f, 0x01, 0x8c, 0x49, 0x6c, 0x60, 0xcf, 0x18, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x31,
-	0x19, 0x37, 0x78, 0xdd, 0x00, 0x00, 0x00,
+	0xc8, 0x9e, 0x8b, 0xdd, 0xbd, 0x28, 0x35, 0xb5, 0x24, 0xb5, 0x48, 0xc8, 0x84, 0x8b, 0x25, 0x20,
+	0x33, 0x2f, 0x5d, 0x48, 0x54, 0x0f, 0x66, 0x2f, 0xb2, 0x2d, 0x52, 0xc2, 0xe8, 0xc2, 0x05, 0x39,
+	0x95, 0x4a, 0x0c, 0x4e, 0x5a, 0x5c, 0x12, 0x99, 0xf9, 0x7a, 0xe9, 0x45, 0x05, 0xc9, 0x7a, 0xa9,
+	0x15, 0x89, 0xb9, 0x05, 0x39, 0xa9, 0xc5, 0x30, 0x85, 0x4e, 0x3c, 0xbe, 0x10, 0x46, 0x00, 0xc8,
+	0xfd, 0x01, 0x8c, 0x49, 0x6c, 0x60, 0x8f, 0x18, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x9b, 0x80,
+	0x09, 0x8f, 0xd9, 0x00, 0x00, 0x00,
 }
