@@ -11,21 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""The Python implementation of the GRPC message.Greeter client."""
+"""The Python implementation of the GRPC simulator.Simulator client."""
 
 from __future__ import print_function
 
 import grpc
 
-import message_pb2
-import message_pb2_grpc
+import simulator_pb2
+import simulator_pb2_grpc
 
 
 def run():
     channel = grpc.insecure_channel('localhost:50051')
-    stub = message_pb2_grpc.GreeterStub(channel)
-    response = stub.Ping(message_pb2.MessageRequest(name='you'))
-    print("Greeter client received: " + response.message)
+    stub = simulator_pb2_grpc.SimulatorStub(channel)
+    response = stub.Ping(simulator_pb2.Request(name='you'))
+    print("Simulator client received: " + response.message)
 
 if __name__ == '__main__':
     run()
