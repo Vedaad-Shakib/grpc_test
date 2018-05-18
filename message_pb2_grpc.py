@@ -19,11 +19,6 @@ class GreeterStub(object):
         request_serializer=message__pb2.HelloRequest.SerializeToString,
         response_deserializer=message__pb2.HelloReply.FromString,
         )
-    self.SayHelloAgain = channel.unary_unary(
-        '/message.Greeter/SayHelloAgain',
-        request_serializer=message__pb2.HelloRequest.SerializeToString,
-        response_deserializer=message__pb2.HelloReply.FromString,
-        )
 
 
 class GreeterServicer(object):
@@ -37,23 +32,11 @@ class GreeterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SayHelloAgain(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_GreeterServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'SayHello': grpc.unary_unary_rpc_method_handler(
           servicer.SayHello,
-          request_deserializer=message__pb2.HelloRequest.FromString,
-          response_serializer=message__pb2.HelloReply.SerializeToString,
-      ),
-      'SayHelloAgain': grpc.unary_unary_rpc_method_handler(
-          servicer.SayHelloAgain,
           request_deserializer=message__pb2.HelloRequest.FromString,
           response_serializer=message__pb2.HelloReply.SerializeToString,
       ),

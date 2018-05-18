@@ -26,9 +26,6 @@ def run():
     stub = message_pb2_grpc.GreeterStub(channel)
     response = stub.SayHello(message_pb2.HelloRequest(name='you'))
     print("Greeter client received: " + response.message)
-    response = stub.SayHelloAgain(message_pb2.HelloRequest(name='Vedaad'))
-    print("Greeter client received: " + response.message)
-
 
 if __name__ == '__main__':
     run()
