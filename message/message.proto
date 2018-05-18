@@ -23,15 +23,15 @@ package message;
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc Ping (HelloRequest) returns (HelloReply) {}
+  rpc Ping (MessageRequest) returns (MessageReply) {}
 }
 
 // The request message containing the user's name.
-message HelloRequest {
+message MessageRequest {
   string name = 1;
 }
 
 // The response message containing the greetings
-message HelloReply {
+message MessageReply {
   string message = 1;
 }

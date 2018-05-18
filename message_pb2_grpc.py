@@ -16,8 +16,8 @@ class GreeterStub(object):
     """
     self.Ping = channel.unary_unary(
         '/message.Greeter/Ping',
-        request_serializer=message__pb2.HelloRequest.SerializeToString,
-        response_deserializer=message__pb2.HelloReply.FromString,
+        request_serializer=message__pb2.MessageRequest.SerializeToString,
+        response_deserializer=message__pb2.MessageReply.FromString,
         )
 
 
@@ -37,8 +37,8 @@ def add_GreeterServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'Ping': grpc.unary_unary_rpc_method_handler(
           servicer.Ping,
-          request_deserializer=message__pb2.HelloRequest.FromString,
-          response_serializer=message__pb2.HelloReply.SerializeToString,
+          request_deserializer=message__pb2.MessageRequest.FromString,
+          response_serializer=message__pb2.MessageReply.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

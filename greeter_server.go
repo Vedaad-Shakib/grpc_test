@@ -20,8 +20,8 @@ const (
 type server struct{}
 
 // Ping implements message.GreeterServer
-func (s *server) Ping(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
-	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
+func (s *server) Ping(ctx context.Context, in *pb.MessageRequest) (*pb.MessageReply, error) {
+	return &pb.MessageReply{Message: "Hello " + in.Name}, nil
 }
 
 func main() {

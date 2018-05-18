@@ -19,21 +19,21 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='message.proto',
   package='message',
   syntax='proto3',
-  serialized_pb=_b('\n\rmessage.proto\x12\x07message\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2?\n\x07Greeter\x12\x34\n\x04Ping\x12\x15.message.HelloRequest\x1a\x13.message.HelloReply\"\x00\x42*\n\x18io.grpc.examples.messageB\x0cMessageProtoP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rmessage.proto\x12\x07message\"\x1e\n\x0eMessageRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1f\n\x0cMessageReply\x12\x0f\n\x07message\x18\x01 \x01(\t2C\n\x07Greeter\x12\x38\n\x04Ping\x12\x17.message.MessageRequest\x1a\x15.message.MessageReply\"\x00\x42*\n\x18io.grpc.examples.messageB\x0cMessageProtoP\x01\x62\x06proto3')
 )
 
 
 
 
-_HELLOREQUEST = _descriptor.Descriptor(
-  name='HelloRequest',
-  full_name='message.HelloRequest',
+_MESSAGEREQUEST = _descriptor.Descriptor(
+  name='MessageRequest',
+  full_name='message.MessageRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='message.HelloRequest.name', index=0,
+      name='name', full_name='message.MessageRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -52,19 +52,19 @@ _HELLOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=26,
-  serialized_end=54,
+  serialized_end=56,
 )
 
 
-_HELLOREPLY = _descriptor.Descriptor(
-  name='HelloReply',
-  full_name='message.HelloReply',
+_MESSAGEREPLY = _descriptor.Descriptor(
+  name='MessageReply',
+  full_name='message.MessageReply',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='message.HelloReply.message', index=0,
+      name='message', full_name='message.MessageReply.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -82,27 +82,27 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=56,
-  serialized_end=85,
+  serialized_start=58,
+  serialized_end=89,
 )
 
-DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
-DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['MessageRequest'] = _MESSAGEREQUEST
+DESCRIPTOR.message_types_by_name['MessageReply'] = _MESSAGEREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), dict(
-  DESCRIPTOR = _HELLOREQUEST,
+MessageRequest = _reflection.GeneratedProtocolMessageType('MessageRequest', (_message.Message,), dict(
+  DESCRIPTOR = _MESSAGEREQUEST,
   __module__ = 'message_pb2'
-  # @@protoc_insertion_point(class_scope:message.HelloRequest)
+  # @@protoc_insertion_point(class_scope:message.MessageRequest)
   ))
-_sym_db.RegisterMessage(HelloRequest)
+_sym_db.RegisterMessage(MessageRequest)
 
-HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Message,), dict(
-  DESCRIPTOR = _HELLOREPLY,
+MessageReply = _reflection.GeneratedProtocolMessageType('MessageReply', (_message.Message,), dict(
+  DESCRIPTOR = _MESSAGEREPLY,
   __module__ = 'message_pb2'
-  # @@protoc_insertion_point(class_scope:message.HelloReply)
+  # @@protoc_insertion_point(class_scope:message.MessageReply)
   ))
-_sym_db.RegisterMessage(HelloReply)
+_sym_db.RegisterMessage(MessageReply)
 
 
 DESCRIPTOR.has_options = True
@@ -114,16 +114,16 @@ _GREETER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=87,
-  serialized_end=150,
+  serialized_start=91,
+  serialized_end=158,
   methods=[
   _descriptor.MethodDescriptor(
     name='Ping',
     full_name='message.Greeter.Ping',
     index=0,
     containing_service=None,
-    input_type=_HELLOREQUEST,
-    output_type=_HELLOREPLY,
+    input_type=_MESSAGEREQUEST,
+    output_type=_MESSAGEREPLY,
     options=None,
   ),
 ])
