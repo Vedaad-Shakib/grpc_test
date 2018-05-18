@@ -1,6 +1,6 @@
 build:
-	python -m grpc_tools.protoc -Ihelloworld --python_out=. --grpc_python_out=. helloworld.proto
-	protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
+	python -m grpc_tools.protoc -Imessage --python_out=. --grpc_python_out=. message.proto
+	protoc -I message/ message/message.proto --go_out=plugins=grpc:message
 
 runserver:
 	go run greeter_server.go

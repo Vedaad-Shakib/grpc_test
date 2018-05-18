@@ -1,4 +1,4 @@
-//go:generate protoc -I ../helloworld --go_out=plugins=grpc:../helloworld ../helloworld/helloworld.proto
+//go:generate protoc -I ../message --go_out=plugins=grpc:../message ../message/message.proto
 
 package main
 
@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	pb "./helloworld"
+	pb "./message"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -16,10 +16,10 @@ const (
 	port = ":50051"
 )
 
-// server is used to implement helloworld.GreeterServer.
+// server is used to implement message.GreeterServer.
 type server struct{}
 
-// SayHello implements helloworld.GreeterServer
+// SayHello implements message.GreeterServer
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
 }
